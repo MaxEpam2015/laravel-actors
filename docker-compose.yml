@@ -1,0 +1,41 @@
+services:
+    nginx:
+        build:
+            context: ./
+            dockerfile: .docker/nginx/nginx.docker
+        container_name: actor_nginx
+        volumes:
+            - ./:/var/www
+            - ./.docker/nginx/ssl:/etc/nginx/ssl
+        ports:
+            - "8080:80"
+        links:
+            - php-fpm
+
+    php-fpm:
+        build:
+            context: ./
+            dockerfile: .docker/php/php-fpm.docker
+        container_name: actor_php-fpm
+        volumes:
+            - ./:/var/www
+        links:
+            - mysql
+        environment:
+            - "DB_PORT=3306"
+            - "DB_HOST=mysql"
+
+    mysql:
+        image: mysql:8.0
+        container_name: actor_mysql
+        tty: true
+        volumes:
+            - ./.docker/mysql/create-test-db.sql:/docker-entrypoint-initdb.d/create-test-db.sql
+        environment:
+            - "MYSQL_ROOT_PASSWORD=secret"
+            - "MYSQL_USER=actor"
+            - "MYSQL_PASSWORD=secret"
+            - "MYSQL_DATABASE=actor_db"
+        ports:
+            - "3306:3306"
+
