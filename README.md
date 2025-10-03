@@ -27,7 +27,6 @@ docker exec -it actor_php-fpm cp -v .env.example .env
 ```
 
 ### Provide your OPENAI_API_KEY in .env
-### Database migrations:
 ```
 #.env
 OPENAI_API_KEY=...
