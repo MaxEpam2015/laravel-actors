@@ -53,3 +53,5 @@ docker exec -it actor_php-fpm php artisan test
 ```bash
 docker exec -it actor_php-fpm php -d memory_limit=1G vendor/bin/phpstan analyse --memory-limit=1G
 ```
+#### Open in browser
+http://localhost:8080/
