@@ -48,3 +48,8 @@ docker exec -it actor_php-fpm npm run build
 docker exec -it actor_php-fpm php artisan test
 
 ```
+
+### Run PHPStan (static analysis):
+```bash
+docker exec -it actor_php-fpm php -d memory_limit=1G vendor/bin/phpstan analyse --memory-limit=1G
+```
