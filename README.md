@@ -40,7 +40,7 @@ docker exec -it actor_php-fpm php artisan migrate
 ### Run Vite dev server:
 ```bash
 
-docker exec -it astro_node npm run build
+docker exec -it actor_php-fpm npm run build
 ```
 
 ### Run tests:
