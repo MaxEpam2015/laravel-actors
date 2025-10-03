@@ -21,7 +21,7 @@ class ActorController extends Controller
     }
 
 
-    public function index(): array|string|null
+    public function index(): array|string|null|View
     {
         $submissions = Actor::latest()->get();
 
